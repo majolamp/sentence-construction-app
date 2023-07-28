@@ -16,7 +16,13 @@ const App = () => {
 
   const [currNouns, setCurrNouns] = useState("");
   const [currVerbs, setCurrVerbs] = useState("");
-
+  const [currAdjectives, setCurrAdjectives] = useState("");
+  const [currAdverbs, setCurrAdverbs] = useState("");
+  const [currPronouns, setCurrPronouns] = useState("");
+  const [currPrepositions, setCurrPrepositions] = useState("");
+  const [currConjunctions, setCurrConjunctions] = useState("");
+  const [currDeterminers, setCurrDeterminers] = useState("");
+  const [currExclamations, setCurrExclamations] = useState("");
 
   const [sentence, setSentence] = useState("");
 
@@ -41,14 +47,41 @@ const App = () => {
       })
   }, [])
 
+   useEffect(() => {
+    setSentence(sentence + " " + currNouns)
+  }, [currNouns])
+
   useEffect(() => {
     setSentence(sentence + " " + currVerbs)
   }, [currVerbs])
 
   useEffect(() => {
-    setSentence(sentence + " " + currNouns)
-  }, [currNouns])
+    setSentence(sentence + " " + currAdjectives)
+  }, [currAdjectives])
 
+  useEffect(() => {
+    setSentence(sentence + " " + currAdverbs)
+  }, [currAdverbs])
+
+  useEffect(() => {
+    setSentence(sentence + " " + currPronouns)
+  }, [currPronouns])
+
+  useEffect(() => {
+    setSentence(sentence + " " + currPrepositions)
+  }, [currPrepositions])
+
+  useEffect(() => {
+    setSentence(sentence + " " + currConjunctions)
+  }, [currConjunctions])
+
+  useEffect(() => {
+    setSentence(sentence + " " + currDeterminers)
+  }, [currDeterminers])
+
+  useEffect(() => {
+    setSentence(sentence + " " + currExclamations)
+  }, [currExclamations])
 
   if (!nouns || !verbs || !adjectives
     || !adverbs
@@ -60,22 +93,80 @@ const App = () => {
 
   return (
     <>
-      <span>Nouns</span>
+    <div className='box'>
+      <ul>
+      <li><span>Nouns</span>
       <select onChange={(e) => { setCurrNouns(e.target.value) }}>
         <option key="key" value=""></option>
         {nouns.map((word, index) => (
           <option key={index} value={word.word}>{word.word}</option >
         ))}
-      </select>
+      </select></li>
 
-      <span>Verbs</span>
+     <li><span>Verbs</span>
       <select onChange={(e) => { setCurrVerbs(e.target.value) }}>
         <option key="key" value=""></option>
         {verbs.map((word, index) => (
           <option key={index} value={word.word}>{word.word}</option >
         ))}
-      </select>
+      </select></li>
 
+      <li><span>Adjectives</span>
+      <select onChange={(e) => { setCurrAdjectives(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+
+      <li><span>Adverbs</span>
+      <select onChange={(e) => { setCurrAdverbs(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+
+     <li> <span>Pronouns</span>
+      <select onChange={(e) => { setCurrPronouns(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+
+      <li><span>Prepositions</span>
+      <select onChange={(e) => { setCurrPrepositions(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+
+      <li><span>Conjunctions</span>
+      <select onChange={(e) => { setCurrConjunctions(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+
+      <li><span>Determiners</span>
+      <select onChange={(e) => { setCurrDeterminers(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+
+      <li><span>Exclamations</span>
+      <select onChange={(e) => { setCurrExclamations(e.target.value) }}>
+        <option key="key" value=""></option>
+        {verbs.map((word, index) => (
+          <option key={index} value={word.word}>{word.word}</option >
+        ))}
+      </select></li>
+      </ul>
       <div className='texteditor'>
         <h1>Build a sentence</h1>
         <div>{sentence}</div>
@@ -83,6 +174,8 @@ const App = () => {
 
         <input onClick={() => setSentence("")} type="submit" value="Clear"></input>
 
+      </div>
+     
       </div>
     </>
   )
